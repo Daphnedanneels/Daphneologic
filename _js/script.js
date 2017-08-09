@@ -251,10 +251,13 @@ $(document).ready(function() {
 			var direction;
 			var mobile = false;
 
-			sectionTrigger(previousSectionIndex);
-			if(window.innerWidth < 900){
-				mobile = true;
-			}
+			// DIT WEGHALEN !!!!!!!!!!!!!!!!
+			$(document).ready(function() {
+				sectionTrigger(previousSectionIndex);
+				if(window.innerWidth < 900){
+					mobile = true;
+				}
+			});
 
 			function initFrame(){
 				let l = path[0].getTotalLength();
@@ -285,7 +288,7 @@ $(document).ready(function() {
 			    sectionsColor: ['RGBA(220, 194, 93, 1.00)', 'RGBA(27, 167, 162, 1.00)', 'RGBA(110, 157, 73, 1.00)', 'RGBA(52, 48, 65, 1.00)', 'RGBA(174, 58, 103, 1.00)'],
 			    navigation: {
 			    	'position': 'right',
-			   		'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5']
+			   		'tooltips': ['Cooking', 'Music', 'Singing', 'Writing', 'Design']
 			   	},
 			    afterRender: function(){
 			    	$('#pp-nav').addClass('custom');
@@ -367,7 +370,7 @@ $(document).ready(function() {
 					if(!mobile){
 						container.css('background-color', 'white').css('box-shadow', '10px 10px 10px RGBA(40, 40, 40, 0.2)').css('transition-duration', '0s');
 					}
-				}, 600);
+				}, 100);
 			};
 
 			function colorChange(section, previousSection){

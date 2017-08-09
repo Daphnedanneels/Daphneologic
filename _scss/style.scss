@@ -20,11 +20,17 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .right {
-	h1 {
-		text-align: right;
-	}
 	.container {
 		flex-direction: row-reverse;
+	}
+	h1, p {
+		margin-left: 10vw;
+	}
+}
+
+.left {
+	h1 {
+		margin-left: -10%;
 	}
 }
 
@@ -61,15 +67,17 @@ h1,h2,h3,h4,h5,h6 {
 	width: 120%;
 	height: 100%;
 	z-index: 1;
-	background-color: blue;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: margin-top 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
 }
 
 .content {
 	width: 80%;
 	z-index: 100;
+	display: flex;
+	flex-direction: column;
 	p {
 		font-family: 'open sans';
 		font-weight: lighter;
@@ -88,7 +96,6 @@ h1,h2,h3,h4,h5,h6 {
 		font-size: 5vw;
 		text-transform: uppercase;
 		text-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
-		margin-left: -10%;
 		transition-delay: 400ms;
 		span {
 			font-weight: lighter;
@@ -99,14 +106,15 @@ h1,h2,h3,h4,h5,h6 {
 		}
 	}
 	h1, p {
-		transition: opacity 1.8s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin-left 1.3s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin-top 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
-		margin-top: 0;
+		transition: opacity 1.8s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin-left 1.3s cubic-bezier(0.550, 0.085, 0.000, 0.990), top 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
+		position: relative;
+		top: 0;
 	}
 }
 
 .image, .frame, .plain, .shadow {
 	position: absolute;
-	transition: width 1.2s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin 1s cubic-bezier(0.550, 0.085, 0.000, 0.990), opacity 0.8s cubic-bezier(0.550, 0.085, 0.000, 0.990);
+	transition: width 1.2s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin 1s cubic-bezier(0.550, 0.085, 0.000, 0.990), opacity 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
 }
 
 .image {
@@ -120,7 +128,7 @@ h1,h2,h3,h4,h5,h6 {
 .plain {
 	width: 600px;
 	height: 500px;
-	transition-delay: 700ms;
+	transition-delay: 500ms;
 	box-shadow: 5px 5px 10px RGBA(40, 40, 40, 0.1);
 }
 
@@ -173,22 +181,16 @@ h1,h2,h3,h4,h5,h6 {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/headphone.jpg");
 		background-position: 99% 99%;
-		margin-left: 0;
-		margin-top: 0;
+		margin-left: -50px;
+		margin-top: 20px;
 	}
 	.plain {
 		background-color: $blue;
-		margin-left: 0;
-		margin-top: 0;
+		margin-left: -200px;
+		margin-top: -60px;
 	}
 	.frame{
 		margin-left: 0;
-	}
-	.title {
-		left: 20px;
-		h1 {
-			text-align: right;
-		}
 	}
 	p {
 		margin-left: 10vw;
@@ -199,24 +201,30 @@ h1,h2,h3,h4,h5,h6 {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/sing.jpg");
 		background-position: 18% 99%;
+		margin-left: -20px;
+		margin-top: -20px;
 	}
 	.plain {
 		background-color: $green;
+		margin-left: 120px;
+		margin-top: 80px;
 	}
 }
+
 .write {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/write.jpg");
 		background-position: 32% 99%;
-		margin-left: 0px;
+		margin-left: -50px;
+		margin-top: 20px;
 	}
 	.plain {
 		background-color: $grey;
-		margin-left: 0px;
-		margin-top: 0px;
+		margin-left: -200px;
+		margin-top: -60px;
 	}
-	.frame {
-		margin-left: 0px;
+	p {
+		margin-left: 10vw;
 	}
 }
 
@@ -224,9 +232,15 @@ h1,h2,h3,h4,h5,h6 {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/design.jpg");
 		background-position: 20% 80%;
+		margin-left: -40px;
+		margin-top: -20px;
 	}
-	.plain { background-color: $grey }
-	.title { left: 180px; }
+	.plain {
+		background-color: $pink;
+		margin-left: 120px;
+		margin-top: 80px;
+	}
+
 }
 
 .hidden {
@@ -234,12 +248,18 @@ h1,h2,h3,h4,h5,h6 {
 		width: 0;
 		box-shadow: 0px 0px 0px RGBA(40, 40, 40, 0.0);
 	}
-	h1, p {
+	.plain, .image, h1, p {
 		opacity: 0;
 	}
-	h1, p, .plain, .image {
-		margin-left: -350px;
-		opacity: 0;
+	&.left {
+		h1, p, .plain, .image {
+			margin-left: -350px;
+		}
+	}
+	&.right {
+		h1, p, .plain, .image {
+			margin-left: 350px;
+		}
 	}
 }
 
@@ -253,7 +273,7 @@ h1,h2,h3,h4,h5,h6 {
 		text-align: left;
 	}
 
-	.ipsum-side {
+	.link-side {
 		position: fixed;
 		border-bottom: 2px solid black;
 		top: 0;
@@ -285,14 +305,20 @@ h1,h2,h3,h4,h5,h6 {
 	}
 
 	.up-animation {
-		.plain, .frame, .image, h1, p {
+		.plain, .frame, .image {
 			margin-top: -1200px;
+		}
+		h1, p {
+			top: -1200px;
 		}
 	}
 
 	.down-animation {
-		.plain, .frame, .image, h1, p {
+		.image-comp {
 			margin-top: 1200px;
+		}
+		h1, p {
+			top: 1200px;
 		}
 	}
 
