@@ -1,0 +1,30 @@
+{
+	"artworks":[
+		{
+			"label":"Deer",
+			"id":"deer"
+		},
+		{
+			"label":"Tree",
+			"id":"tree"
+		},
+		{
+			"label":"Snowflake",
+			"id":"flake"
+		}
+	],
+	"colors":[
+		{
+			"label":"Red",
+			"value":"#B51809"
+		},
+		{
+			"label":"Light green",
+			"value":"#70BAB5"
+		},
+		{
+			"label":"Dark green",
+			"value":"#007A73"
+		}
+	]
+}

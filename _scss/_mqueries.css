@@ -1,0 +1,128 @@
+@media only screen and (max-width: 1200px){
+  .right-section, .left-section {
+    width: 95%;
+    margin-left: -8vw;
+  }
+  .image-comp {
+    width: 105%;
+  }
+  svg {
+    transform: scale(0.85);
+    margin-left: -5vw;
+  }
+}
+
+@media only screen and (max-width: 1100px){
+  svg {
+    transform: scale(0.75);
+    margin-left: -7vw;
+    margin-top: -4vw;
+  }
+}
+
+@media only screen and (max-width: 900px){
+  .bg-color {
+    background-color: white;
+  }
+  .container {
+    background-color: none;
+    box-shadow: none;
+    flex-direction: column;
+    flex-flow: column-reverse;
+  }
+  .right-section, .left-section {
+  	/*background-color: blue;*/
+    margin-left: 75vw;
+    margin-top: 10vw;
+  }
+  .image-comp {
+    /*background-color: orange;*/
+    margin-left: -40vw;
+    margin-top: -60vh;
+  }
+  .image {
+    width: 55vw;
+    height: 55vw;
+  }
+  .plain {
+    width: 55vw;
+    height: 45vw;
+    margin-left: -5vw;
+    margin-top: -8vw;
+  }
+  .title {
+    margin-left: -35vw;
+    top: -8vh;
+  }
+  h1 { font-size: 10vw; }
+  section p { margin-left: 18vw;}
+  svg {
+    transform: scale(0.85);
+    margin-left: -4vw;
+    margin-top: -6vw;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .title {
+    top: 0vh;
+  }
+  svg {
+    transform: scale(0.80);
+    margin-top: -12vw;
+  }
+}
+
+@media only screen and (max-width: 650px){
+  .right-section, .left-section {
+    margin-left: 0;
+    margin-top: 5vw;
+  }
+  .title {
+    margin-left: 0vw;
+    left: 0;
+  }
+  .image-comp {
+    margin-top: -35vw;
+    margin-left: -50vw;
+  }
+  .image {
+    width: 70vw;
+    height: 70vw;
+  }
+  .plain {
+    width: 70vw;
+    height: 60vw;
+  }
+  h1 {
+    margin: 0;
+  }
+  section p {
+    width: 80vw;
+    margin-left: 10vw;
+  }
+  svg {
+    transform: scale(0.80);
+    margin-top: -15vw;
+  }
+}
+
+@media only screen and (max-width: 550px){
+  section p {
+    width: 90vw;
+    margin-left: -5vw;
+  }
+  svg {
+    transform: scale(0.65);
+    margin-top: -22vw;
+    margin-left: -18vw;
+  }
+}
+
+@media only screen and (max-width: 470px){
+  svg {
+    transform: scale(0.55);
+    margin-top: -22vw;
+    margin-left: -18vw;
+  }
+}
