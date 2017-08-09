@@ -213,20 +213,13 @@ h1, h2, h3, h4, h5, h6 {
   color: RGBA(52, 48, 65, 1);
 }
 
-h1 {
-  font-family: 'Butler';
-  font-weight: 700;
-  font-size: 5vw;
-  text-transform: uppercase;
-  text-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
+.right h1 {
+  text-align: right;
 }
 
-h1 span {
-  font-weight: lighter;
-  font-family: helvetica;
-  font-size: 0.4em;
-  display: block;
-  margin-bottom: 10px;
+.right .container {
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .pp-tableCell {
@@ -238,27 +231,233 @@ h1 span {
   justify-content: center;
 }
 
-.title {
-  position: relative;
-  left: 80px;
-  top: -10px;
+.container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 90vw;
+  height: 90vh;
+  background-color: white;
+  box-shadow: 10px 10px 10px RGBA(40, 40, 40, 0.2);
+  transition: all cubic-bezier(0.55, 0.085, 0, 0.99);
+  transition-duration: 0s;
+}
+
+.bg-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  width: 100%;
+  height: 100%;
+  transition: background-color cubic-bezier(0.55, 0.085, 0, 0.99);
+  transition-duration: 0s;
+}
+
+.image-comp {
+  width: 120%;
+  height: 100%;
+  z-index: 1;
+  background-color: blue;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.content {
+  width: 80%;
   z-index: 100;
 }
 
-section p {
+.content p {
   font-family: 'open sans';
   font-weight: lighter;
   line-height: 2em;
-  width: 30vw;
+  width: 70%;
   font-size: 0.6em;
-  margin: 10px 0 20px 120px;
+  margin: 10px 0 20px;
   color: RGBA(40, 40, 40, 1);
   background-color: white;
   padding: 20px 30px;
+  transition-delay: 600ms;
 }
 
-section.right-section, section.left-section {
-  z-index: 100;
+.content h1 {
+  font-family: 'Butler';
+  font-weight: 700;
+  font-size: 5vw;
+  text-transform: uppercase;
+  text-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
+  margin-left: -10%;
+  transition-delay: 400ms;
+}
+
+.content h1 span {
+  font-weight: lighter;
+  font-family: 'helvetica';
+  font-size: 0.4em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.content h1, .content p {
+  transition: opacity 1.8s cubic-bezier(0.55, 0.085, 0, 0.99), margin-left 1.3s cubic-bezier(0.55, 0.085, 0, 0.99), margin-top 1s cubic-bezier(0.55, 0.085, 0, 0.99);
+  margin-top: 0;
+}
+
+.image, .frame, .plain, .shadow {
+  position: absolute;
+  transition: width 1.2s cubic-bezier(0.55, 0.085, 0, 0.99), margin 1s cubic-bezier(0.55, 0.085, 0, 0.99), opacity 0.8s cubic-bezier(0.55, 0.085, 0, 0.99);
+}
+
+.image {
+  width: 600px;
+  height: 600px;
+  background-size: cover;
+  transition-delay: 400ms;
+  box-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
+}
+
+.plain {
+  width: 600px;
+  height: 500px;
+  transition-delay: 700ms;
+  box-shadow: 5px 5px 10px RGBA(40, 40, 40, 0.1);
+}
+
+.frame svg path {
+  fill: none;
+  stroke: RGBA(246, 243, 245, 1);
+  stroke-width: 16;
+}
+
+.shadow.out {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 10px 10px 30px RGBA(40, 40, 40, 0.1);
+}
+
+.shadow.in {
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  box-shadow: inset 10px 10px 30px RGBA(40, 40, 40, 0.02);
+}
+
+.cook .image {
+  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/cook.jpg");
+  background-position: 80% 80%;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+.cook .plain {
+  background-color: RGBA(220, 194, 93, 1);
+  margin-left: 120px;
+  margin-top: 80px;
+}
+
+.music .image {
+  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/headphone.jpg");
+  background-position: 99% 99%;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.music .plain {
+  background-color: RGBA(49, 170, 166, 1);
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.music .frame {
+  margin-left: 0;
+}
+
+.music .title {
+  left: 20px;
+}
+
+.music .title h1 {
+  text-align: right;
+}
+
+.music p {
+  margin-left: 10vw;
+}
+
+.sing .image {
+  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/sing.jpg");
+  background-position: 18% 99%;
+}
+
+.sing .plain {
+  background-color: #7CA047;
+}
+
+.write .image {
+  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/write.jpg");
+  background-position: 32% 99%;
+  margin-left: 0px;
+}
+
+.write .plain {
+  background-color: RGBA(67, 65, 78, 1);
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+.write .frame {
+  margin-left: 0px;
+}
+
+.design .image {
+  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/design.jpg");
+  background-position: 20% 80%;
+}
+
+.design .plain {
+  background-color: RGBA(67, 65, 78, 1);
+}
+
+.design .title {
+  left: 180px;
+}
+
+.hidden .plain, .hidden .image {
+  width: 0;
+  box-shadow: 0px 0px 0px RGBA(40, 40, 40, 0);
+}
+
+.hidden h1, .hidden p {
+  opacity: 0;
+}
+
+.hidden h1, .hidden p, .hidden .plain, .hidden .image {
+  margin-left: -350px;
+  opacity: 0;
+}
+
+#pp-nav.custom .pp-tooltip {
+  color: #AAA;
+}
+
+#markup {
+  display: block;
+  width: 450px;
+  margin: 20px auto;
+  text-align: left;
 }
 
 .ipsum-side {
@@ -297,226 +496,12 @@ section.right-section, section.left-section {
   cursor: pointer;
 }
 
-.container {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 90vw;
-  height: 90vh;
-  background-color: white;
-  box-shadow: 10px 10px 10px RGBA(40, 40, 40, 0.2);
-  transition: all cubic-bezier(0.55, 0.085, 0, 0.99);
-  transition-duration: 0s;
+.up-animation .plain, .up-animation .frame, .up-animation .image, .up-animation h1, .up-animation p {
+  margin-top: -1200px;
 }
 
-.bg-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -5;
-  width: 100%;
-  height: 100%;
-  transition: background-color cubic-bezier(0.55, 0.085, 0, 0.99);
-  transition-duration: 0s;
-}
-
-.image-comp {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.right-section {
-  width: 100%;
-  z-index: 99;
-}
-
-.image, .frame, .plain, .shadow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.plain, .image {
-  transition: width 1s cubic-bezier(0.55, 0.085, 0, 0.99), margin 1s cubic-bezier(0.55, 0.085, 0, 0.99);
-}
-
-.plain.hidden, .image.hidden {
-  width: 0;
-  opacity: 0;
-  transition: width 1s cubic-bezier(0.55, 0.085, 0, 0.99);
-  box-shadow: 0px 0px 0px RGBA(40, 40, 40, 0);
-}
-
-.plain.hidden.left, .image.hidden.left {
-  margin-left: -20vw;
-}
-
-.plain.hidden.right, .image.hidden.right {
-  margin-left: 20vw;
-}
-
-.image {
-  margin-left: -20vw;
-  margin-top: -20vw;
-  width: 40vw;
-  height: 40vw;
-  background-size: cover;
-  transition-delay: 500ms;
-  box-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
-}
-
-.frame {
-  margin-left: -18vw;
-  margin-top: -23vw;
-}
-
-.frame svg path {
-  fill: none;
-  stroke: RGBA(246, 243, 245, 1);
-  stroke-width: 16;
-  margin-bottom: -10px;
-}
-
-.plain {
-  width: 50vw;
-  height: 40vw;
-  margin-left: -15vw;
-  margin-top: -18vw;
-  transition-delay: 700ms;
-  box-shadow: 5px 5px 10px RGBA(40, 40, 40, 0.1);
-}
-
-.music .image {
-  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/headphone.jpg");
-  background-position: 99% 99%;
-  margin-left: -20vw;
-  margin-top: -18vw;
-}
-
-.music .plain {
-  background-color: RGBA(49, 170, 166, 1);
-  margin-left: -35vw;
-  margin-top: -20vw;
-}
-
-.music .frame {
-  margin-left: -23vw;
-}
-
-.music .title {
-  left: 20px;
-}
-
-.music .title h1 {
-  text-align: right;
-}
-
-.music p {
-  margin-left: 10vw;
-}
-
-.cook .image {
-  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/cook.jpg");
-  background-position: 80% 80%;
-}
-
-.cook .plain {
-  background-color: RGBA(220, 194, 93, 1);
-}
-
-.sing .image {
-  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/sing.jpg");
-  background-position: 18% 99%;
-  margin-top: -18vw;
-}
-
-.sing .plain {
-  background-color: #7CA047;
-  margin-left: -18vw;
-  margin-top: -20vw;
-}
-
-.write .image {
-  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/write.jpg");
-  background-position: 32% 99%;
-  margin-left: -320px;
-}
-
-.write .plain {
-  background-color: RGBA(67, 65, 78, 1);
-  margin-left: -450px;
-  margin-top: -150px;
-}
-
-.write .frame {
-  margin-left: -370px;
-}
-
-.write .title {
-  left: -120px;
-}
-
-.write h1 {
-  text-align: right;
-}
-
-.design .image {
-  background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/design.jpg");
-  background-position: 20% 80%;
-}
-
-.design .plain {
-  background-color: RGBA(174, 58, 103, 1);
-}
-
-.design .title {
-  left: 180px;
-}
-
-p, .title {
-  opacity: 1;
-  transition: opacity 1.8s cubic-bezier(0.55, 0.085, 0, 0.99), margin 1.3s cubic-bezier(0.55, 0.085, 0, 0.99);
-  transition-delay: 500ms;
-}
-
-p.hidden, .title.hidden {
-  opacity: 0;
-}
-
-p.hidden.left, .title.hidden.left {
-  margin-left: -350px;
-}
-
-p.hidden.right, .title.hidden.right {
-  margin-left: 350px;
-}
-
-#pp-nav.custom .pp-tooltip {
-  color: #AAA;
-}
-
-#markup {
-  display: block;
-  width: 450px;
-  margin: 20px auto;
-  text-align: left;
-}
-
-.animate-out {
-  transition: top 1s cubic-bezier(0.55, 0.085, 0, 0.99);
-}
-
-.up {
-  top: -1800px;
-}
-
-.down {
-  top: 1800px;
+.down-animation .plain, .down-animation .frame, .down-animation .image, .down-animation h1, .down-animation p {
+  margin-top: 1200px;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -526,20 +511,6 @@ p.hidden.right, .title.hidden.right {
   }
   .image-comp {
     width: 105%;
-  }
-  svg {
-    -ms-transform: scale(0.85);
-    transform: scale(0.85);
-    margin-left: -5vw;
-  }
-}
-
-@media only screen and (max-width: 1100px) {
-  svg {
-    -ms-transform: scale(0.75);
-    transform: scale(0.75);
-    margin-left: -7vw;
-    margin-top: -4vw;
   }
 }
 
@@ -585,22 +556,11 @@ p.hidden.right, .title.hidden.right {
   section p {
     margin-left: 18vw;
   }
-  svg {
-    -ms-transform: scale(0.85);
-    transform: scale(0.85);
-    margin-left: -4vw;
-    margin-top: -6vw;
-  }
 }
 
 @media only screen and (max-width: 750px) {
   .title {
     top: 0vh;
-  }
-  svg {
-    -ms-transform: scale(0.8);
-    transform: scale(0.8);
-    margin-top: -12vw;
   }
 }
 
@@ -632,31 +592,11 @@ p.hidden.right, .title.hidden.right {
     width: 80vw;
     margin-left: 10vw;
   }
-  svg {
-    -ms-transform: scale(0.8);
-    transform: scale(0.8);
-    margin-top: -15vw;
-  }
 }
 
 @media only screen and (max-width: 550px) {
   section p {
     width: 90vw;
     margin-left: -5vw;
-  }
-  svg {
-    -ms-transform: scale(0.65);
-    transform: scale(0.65);
-    margin-top: -22vw;
-    margin-left: -18vw;
-  }
-}
-
-@media only screen and (max-width: 470px) {
-  svg {
-    -ms-transform: scale(0.55);
-    transform: scale(0.55);
-    margin-top: -22vw;
-    margin-left: -18vw;
   }
 }

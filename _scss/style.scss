@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'pagepiling';
+@import 'variables';
 
 html {
   font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
@@ -18,18 +19,12 @@ h1,h2,h3,h4,h5,h6 {
     color: RGBA(52, 48, 65, 1.00);
 }
 
-h1 {
-	font-family: 'Butler';
-	font-weight: 700;
-	font-size: 5vw;
-	text-transform: uppercase;
-	text-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
-	span {
-		font-weight: lighter;
-		font-family: helvetica;
-		font-size: 0.4em;
-		display:block;
-		margin-bottom: 10px;
+.right {
+	h1 {
+		text-align: right;
+	}
+	.container {
+		flex-direction: row-reverse;
 	}
 }
 
@@ -37,63 +32,6 @@ h1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.title {
-	position: relative;
-	left: 80px;
-	top: -10px;
-	z-index: 100;
-}
-
-section {
-	p {
-		font-family: 'open sans';
-		font-weight: lighter;
-		line-height: 2em;
-		width: 30vw;
-		font-size: 0.6em;
-		// margin-left: 100px;
-		margin: 10px 0 20px 120px;
-		color: RGBA(40, 40, 40, 1.00);
-		background-color: white;
-		padding: 20px 30px;
-	}
-	&.right-section, &.left-section {
-		z-index: 100;
-	}
-
-}
-
-.ipsum-side {
-	position: fixed;
-	border-bottom: 2px solid black;
-	top: 0;
-	right: 0;
-	transform: rotate(90deg);
-	padding-bottom: 10px;
-	margin: 5vh -11.5vh 0 0;
-	width: 32vh;
-	transition: all 1s ease;
-	z-index: 101;
-	a {
-		text-decoration: none;
-	}
-	p {
-		font-size: 0.6em;
-		color: black;
-		padding-left: 5vh;
-		margin-left: 12vh;
-		width: 35vh;
-		transition: all 0.5s ease;
-	}
-	&:hover {
-		margin-top: 6vh;
-		p {
-			letter-spacing: 0.1em;
-			cursor: pointer;
-		}
-	}
 }
 
 .container {
@@ -120,47 +58,70 @@ section {
 }
 
 .image-comp {
-	position: relative;
-	width: 100%;
+	width: 120%;
 	height: 100%;
 	z-index: 1;
+	background-color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.right-section {
-	width: 100%;
-	z-index: 99;
+.content {
+	width: 80%;
+	z-index: 100;
+	p {
+		font-family: 'open sans';
+		font-weight: lighter;
+		line-height: 2em;
+		width: 70%;
+		font-size: 0.6em;
+		margin: 10px 0 20px;
+		color: RGBA(40, 40, 40, 1.00);
+		background-color: white;
+		padding: 20px 30px;
+		transition-delay: 600ms;
+	}
+	h1 {
+		font-family: 'Butler';
+		font-weight: 700;
+		font-size: 5vw;
+		text-transform: uppercase;
+		text-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
+		margin-left: -10%;
+		transition-delay: 400ms;
+		span {
+			font-weight: lighter;
+			font-family: 'helvetica';
+			font-size: 0.4em;
+			display:block;
+			margin-bottom: 10px;
+		}
+	}
+	h1, p {
+		transition: opacity 1.8s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin-left 1.3s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin-top 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
+		margin-top: 0;
+	}
 }
 
 .image, .frame, .plain, .shadow {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-}
-
-.plain, .image {
-	transition: width 1s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
-	&.hidden {
-		width: 0;
-		opacity: 0;
-		transition: width 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
-		box-shadow: 0px 0px 0px RGBA(40, 40, 40, 0.0);
-		&.left {
-			margin-left: -20vw;
-		}
-		&.right {
-			margin-left: 20vw;
-		}
-	}
+	transition: width 1.2s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin 1s cubic-bezier(0.550, 0.085, 0.000, 0.990), opacity 0.8s cubic-bezier(0.550, 0.085, 0.000, 0.990);
 }
 
 .image {
-	margin-left: -20vw;
-	margin-top: -20vw;
-	width: 40vw;
-	height: 40vw;
+	width: 600px;
+	height: 600px;
 	background-size: cover;
-	transition-delay: 500ms;
+	transition-delay: 400ms;
 	box-shadow: 10px 10px 20px RGBA(40, 40, 40, 0.1);
+}
+
+.plain {
+	width: 600px;
+	height: 500px;
+	transition-delay: 700ms;
+	box-shadow: 5px 5px 10px RGBA(40, 40, 40, 0.1);
 }
 
 .frame {
@@ -168,53 +129,60 @@ section {
 		fill:none;
 		stroke: RGBA(246, 243, 245, 1.00);
 		stroke-width:16;
-		margin-bottom: -10px;
 	}
-	margin-left: -18vw;
-	margin-top: -23vw;
-	// .shadow {
-	// 	&.out {
-	// 		width: 40vw;
-	// 		height: 40vw;
-	// 		position: absolute;
-	// 		top: 0;
-	// 		left: 0;
-	// 		box-shadow: 10px 10px 30px RGBA(40, 40, 40, 0.1);
-	// 	}
-	// 	&.in {
-	// 		width: 40vw;
-	// 		height: 40vw;
-	// 		position: absolute;
-	// 		top: 8px;
-	// 		left: 8px;
-	// 		box-shadow: inset 10px 10px 30px RGBA(40, 40, 40, 0.02);
-	// 	}
-	// }
 }
 
-.plain {
-	width: 50vw;
-	height: 40vw;
-	margin-left: -15vw;
-	margin-top: -18vw;
-	transition-delay: 700ms;
-	box-shadow: 5px 5px 10px RGBA(40, 40, 40, 0.1);
+.shadow {
+	&.out {
+		width: 600px;
+		height: 600px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		box-shadow: 10px 10px 30px RGBA(40, 40, 40, 0.1);
+	}
+	&.in {
+		width: 600px;
+		height: 600px;
+		position: absolute;
+		top: 8px;
+		left: 8px;
+		box-shadow: inset 10px 10px 30px RGBA(40, 40, 40, 0.02);
+	}
+}
+
+
+//content specifiek
+
+.cook {
+	.image {
+		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/cook.jpg");
+		background-position: 80% 80%;
+		margin-left: -20px;
+		margin-top: -20px;
+	}
+	.plain {
+		background-color: $yellow;
+		margin-left: 120px;
+		margin-top: 80px;
+	}
+	.frame { }
 }
 
 .music {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/headphone.jpg");
 		background-position: 99% 99%;
-		margin-left: -20vw;
-		margin-top: -18vw;
+		margin-left: 0;
+		margin-top: 0;
 	}
 	.plain {
-		background-color: RGBA(49, 170, 166, 1.00);
-		margin-left: -35vw;
-		margin-top: -20vw;
+		background-color: $blue;
+		margin-left: 0;
+		margin-top: 0;
 	}
 	.frame{
-		margin-left: -23vw;
+		margin-left: 0;
 	}
 	.title {
 		left: 20px;
@@ -226,64 +194,52 @@ section {
 		margin-left: 10vw;
 	}
 }
-.cook {
-	.image {
-		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/cook.jpg");
-		background-position: 80% 80%;
-	}
-	.plain { background-color: RGBA(220, 194, 93, 1.00)}
-}
+
 .sing {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/sing.jpg");
 		background-position: 18% 99%;
-		margin-top: -18vw;
 	}
 	.plain {
-		background-color: #7CA047;
-		margin-left: -18vw;
-		margin-top: -20vw;
+		background-color: $green;
 	}
 }
 .write {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/write.jpg");
 		background-position: 32% 99%;
-		margin-left: -320px;
+		margin-left: 0px;
 	}
 	.plain {
-		background-color: RGBA(67, 65, 78, 1.00);
-		margin-left: -450px;
-		margin-top: -150px;
+		background-color: $grey;
+		margin-left: 0px;
+		margin-top: 0px;
 	}
 	.frame {
-		margin-left: -370px;
-	}
-	.title {
-		left: -120px;
-	}
-	h1 {
-		text-align: right;
+		margin-left: 0px;
 	}
 }
+
 .design {
 	.image {
 		background-image: url("/Users/daphnedanneels/Desktop/pagepiling2/assets/img/design.jpg");
 		background-position: 20% 80%;
 	}
-	.plain { background-color: RGBA(174, 58, 103, 1.00)}
+	.plain { background-color: $grey }
 	.title { left: 180px; }
 }
 
-p, .title {
-	opacity: 1;
-	transition: opacity 1.8s cubic-bezier(0.550, 0.085, 0.000, 0.990), margin 1.3s cubic-bezier(0.550, 0.085, 0.000, 0.990);
-	transition-delay: 500ms;
-	&.hidden {
+.hidden {
+	.plain, .image {
+		width: 0;
+		box-shadow: 0px 0px 0px RGBA(40, 40, 40, 0.0);
+	}
+	h1, p {
 		opacity: 0;
-		&.left { margin-left: -350px; }
-		&.right { margin-left: 350px; }
-
+	}
+	h1, p, .plain, .image {
+		margin-left: -350px;
+		opacity: 0;
 	}
 }
 
@@ -297,16 +253,47 @@ p, .title {
 		text-align: left;
 	}
 
-	.animate-out {
-		transition: top 1s cubic-bezier(0.550, 0.085, 0.000, 0.990);
+	.ipsum-side {
+		position: fixed;
+		border-bottom: 2px solid black;
+		top: 0;
+		right: 0;
+		transform: rotate(90deg);
+		padding-bottom: 10px;
+		margin: 5vh -11.5vh 0 0;
+		width: 32vh;
+		transition: all 1s ease;
+		z-index: 101;
+		a {
+			text-decoration: none;
+		}
+		p {
+			font-size: 0.6em;
+			color: black;
+			padding-left: 5vh;
+			margin-left: 12vh;
+			width: 35vh;
+			transition: all 0.5s ease;
+		}
+		&:hover {
+			margin-top: 6vh;
+			p {
+				letter-spacing: 0.1em;
+				cursor: pointer;
+			}
+		}
 	}
 
-	.up {
-		top: -1800px;
+	.up-animation {
+		.plain, .frame, .image, h1, p {
+			margin-top: -1200px;
+		}
 	}
 
-	.down {
-		top: 1800px;
+	.down-animation {
+		.plain, .frame, .image, h1, p {
+			margin-top: 1200px;
+		}
 	}
 
 @import 'mqueries';

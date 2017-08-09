@@ -249,20 +249,11 @@ $(document).ready(function() {
 			let handle;
 			let bgColors = ["", "RGBA(220, 194, 93, 1.00)", "RGBA(27, 167, 162, 1.00)", "RGBA(110, 157, 73, 1.00)", "RGBA(52, 48, 65, 1.00)", "RGBA(174, 58, 103, 1.00)"];
 			var direction;
+			var mobile = false;
 
-			$(document).ready(function() {
-				sectionTrigger(previousSectionIndex);
-				transformSVG();
-			});
-
-			function transformSVG(){
-				var viewWidth = (window.innerWidth * 0.4);
-				var scaleFactor = viewWidth/viewWidth;
-				console.log(scaleFactor);
-
-				// $('svg').css('transform' : 'scale(' + (viewWidth*2.5)/100 + ')');
-
-				requestAnimationFrame(transformSVG);
+			sectionTrigger(previousSectionIndex);
+			if(window.innerWidth < 900){
+				mobile = true;
 			}
 
 			function initFrame(){
@@ -310,7 +301,7 @@ $(document).ready(function() {
 
 
 			$(window).mousemove(function(event){
-				// MAAK PROPER!!!!
+				// MAAK PROPER!!!!!!!
 				var imageOffsetX = event.clientX - window.innerWidth/2;
 				var imageOffsetXNegative = -(event.clientX - window.innerWidth/2);
 				var imageOffsetY = -(event.clientY - window.innerHeight/2);
@@ -342,7 +333,7 @@ $(document).ready(function() {
 				directionDetection(sectionIndex, previousSectionIndex);
 				sectionUntrigger(previousSectionIndex);
 				sectionTrigger(sectionIndex);
-				if(window.innerWidth > 900){
+				if(!mobile){
 					colorChange(sectionIndex, previousSectionIndex);
 				}
 				previousSectionIndex = sectionIndex;
@@ -362,36 +353,21 @@ $(document).ready(function() {
 			};
 
 			function sectionUntrigger(section){
-				console.log(direction);
+				var currentDirection = direction;
 				var sectionId = '#section' + section + '';
 				var previousSection = $(sectionId);
-				var plain = previousSection.find('.plain');
-				var frame = previousSection.find('.frame');
-				var image = previousSection.find('.image');
-				var container = previousSection.find('.container');
-				var p = previousSection.find('p');
-				var title = previousSection.find('.title');
+				let container = previousSection.find('.container');
 				//add animate out !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				plain.addClass('animate-out').addClass(direction);
-				image.addClass('animate-out').addClass(direction);
-				frame.addClass('animate-out').addClass(direction);
-				p.addClass('animate-out').addClass(direction);
-				title.addClass('animate-out').addClass(direction);
+				previousSection.addClass(currentDirection + '-animation');
 				container.css('background-color', 'rgba(0,0,0,0)').css('box-shadow', 'none').css('transition-duration', '0.5s');
 				//delay addclass hidden after animate out!!!!!!!!!!!!!!!!!!!!!!!!!!
 				setTimeout(function () {
-					plain.addClass('hidden');
-					image.addClass('hidden');
-					frame.addClass('hidden');
-					title.addClass('hidden');
-					p.addClass('hidden');
-					plain.removeClass('animate-out').removeClass(direction);
-					frame.removeClass('animate-out').removeClass(direction);
-					image.removeClass('animate-out').removeClass(direction);
-					p.removeClass('animate-out').removeClass(direction);
-					title.removeClass('animate-out').removeClass(direction);
-					container.css('background-color', 'white').css('box-shadow', '10px 10px 10px RGBA(40, 40, 40, 0.2)').css('transition-duration', '0s');
-				}, 800);
+					previousSection.removeClass(currentDirection + '-animation');
+					previousSection.addClass('hidden');
+					if(!mobile){
+						container.css('background-color', 'white').css('box-shadow', '10px 10px 10px RGBA(40, 40, 40, 0.2)').css('transition-duration', '0s');
+					}
+				}, 600);
 			};
 
 			function colorChange(section, previousSection){
@@ -419,9 +395,6 @@ $(document).ready(function() {
 				var currentSection = $(sectionId);
 				path = $(sectionId).find('path');
 				initFrame();
-				currentSection.find('.title').removeClass('hidden');
-				currentSection.find('p').removeClass('hidden');
-				currentSection.find('.plain').removeClass('hidden');
-				currentSection.find('.image').removeClass('hidden');
+				currentSection.removeClass('hidden');
 			};
 });
